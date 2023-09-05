@@ -6,7 +6,8 @@ var TypesCommands map[int]string = map[int]string{
 	0: "DESCONHECIDO",
 	1: "MONITORAR_SITE",
 	2: "MONITORAR_VARIOS_SITE",
-	3: "EXIT",
+	3: "EXIBIR_LOGS",
+	4: "EXIT",
 }
 
 func Get() string {
@@ -34,7 +35,8 @@ func questions(initialQuestion bool) {
 	}
 	fmt.Println("1: Monitorar um Site")
 	fmt.Println("2: Monitorar vários sites (URL`s) de um arquivo.txt")
-	fmt.Println("3: Fechar aplicação")
+	fmt.Println("3: Exibir Logs")
+	fmt.Println("4: Fechar aplicação")
 }
 
 func toTransform(command int) string {
@@ -43,6 +45,10 @@ func toTransform(command int) string {
 	case 1:
 		return TypesCommands[command]
 	case 2:
+		return TypesCommands[command]
+	case 3:
+		return TypesCommands[command]
+	case 4:
 		return TypesCommands[command]
 	default:
 		fmt.Println("Infelizmente esse comando não existe, tente novamente!")
