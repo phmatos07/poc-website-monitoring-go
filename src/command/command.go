@@ -5,7 +5,8 @@ import "fmt"
 var TypesCommands map[int]string = map[int]string{
 	0: "DESCONHECIDO",
 	1: "MONITORAR_SITE",
-	2: "EXIT",
+	2: "MONITORAR_VARIOS_SITE",
+	3: "EXIT",
 }
 
 func Get() string {
@@ -32,7 +33,8 @@ func questions(initialQuestion bool) {
 		fmt.Println("Olá, esse é o aplicativo para monitoramento de Sites, selecione a opção que atende seu cenário:")
 	}
 	fmt.Println("1: Monitorar um Site")
-	fmt.Println("2: Fechar aplicação")
+	fmt.Println("2: Monitorar vários sites (URL`s) de um arquivo.txt")
+	fmt.Println("3: Fechar aplicação")
 }
 
 func toTransform(command int) string {
