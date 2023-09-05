@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"strconv"
 
 	"github.com/phmatos07/poc-website-monitoring-go/errorLog"
 )
@@ -35,11 +36,17 @@ func ToMonitor() {
 }
 
 func ToView(site string, statusCode int) {
+
+	var mensage string
+
 	if statusCode == 200 {
-		fmt.Println("Site:", site, "foi carregado com sucesso!")
+		mensage = "Site: " + site + " foi carregado com sucesso! | Status Code: " + strconv.FormatInt(int64(statusCode), 10)
 	} else {
-		fmt.Println("Site:", site, "está com problemas. Status Code:", statusCode)
+		mensage = "Site: " + site + " está com problemas! | Status Code: " + strconv.FormatInt(int64(statusCode), 10)
 	}
+
+	fmt.Println(mensage)
+	errorLog.RegisterLogSite(mensage)
 }
 
 func questions() {

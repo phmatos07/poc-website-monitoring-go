@@ -5,8 +5,36 @@ import (
 	"os"
 )
 
+const mensage = "Infelizmente ocorreu um erro!"
+
 func Log(err error) {
-	fmt.Println("Infelizmente ocorreu um erro!")
+	fmt.Println(mensage)
 	fmt.Println("Erro: ", err)
+	registerError(err.Error())
 	os.Exit(0)
+}
+
+func RegisterLogSite(mensage string) {
+
+	file, err := os.OpenFile("log-site.txt", os.O_RDWR|os.O_CREATE, 0666)
+
+	if err != nil {
+		Log(err)
+	}
+	file.WriteString(mensage)
+	file.Close()
+}
+
+func registerError(erro string) {
+
+	file, err := os.OpenFile("error-log.txt", os.O_RDWR|os.O_CREATE, 0666)
+
+	if err != nil {
+		fmt.Println(mensage)
+		fmt.Println("Erro: ", err)
+		file.WriteString("Erro: " + err.Error())
+		os.Exit(0)
+	}
+	file.WriteString("Erro: " + erro)
+	file.Close()
 }
