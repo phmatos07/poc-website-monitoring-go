@@ -24,6 +24,8 @@ func ToMonitor() {
 			errorLog.Log(err)
 		}
 
+		fmt.Println("")
+		fmt.Println("MONITORANDO SITE....")
 		ToView(site, resp.StatusCode)
 
 		questions()

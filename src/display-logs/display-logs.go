@@ -15,6 +15,6 @@ func ToView() {
 	}
 
 	fmt.Println("")
-	fmt.Println("LOGS:")
+	fmt.Println("EXIBINDO LOGS....")
 	fmt.Println(string(file))
 }

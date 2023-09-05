@@ -2,6 +2,7 @@ package monitorFile
 
 import (
 	"bufio"
+	"fmt"
 	"io"
 	"net/http"
 	"os"
@@ -14,6 +15,8 @@ import (
 func ToMonitor() {
 
 	sites := readFile()
+	fmt.Println("")
+	fmt.Println("MONITORANDO SITES....")
 
 	for i := 0; i < len(sites); i++ {
 		resp, err := http.Get(sites[i])
