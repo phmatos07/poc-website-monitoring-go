@@ -1,1 +1,0 @@
-Erro: Get "http://www.teste.com.br": dial tcp: lookup www.teste.com.br on 172.29.240.1:53: no such host
