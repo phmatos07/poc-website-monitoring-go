@@ -7,6 +7,7 @@ import (
 	"strconv"
 
 	"github.com/phmatos07/poc-website-monitoring-go/errorLog"
+	timebr "github.com/phmatos07/poc-website-monitoring-go/time-br"
 )
 
 func ToMonitor() {
@@ -40,9 +41,9 @@ func ToView(site string, statusCode int) {
 	var mensage string
 
 	if statusCode == 200 {
-		mensage = "Site: " + site + " foi carregado com sucesso! | Status Code: " + strconv.FormatInt(int64(statusCode), 10) + "\n"
+		mensage = timebr.ToView() + " - Site: " + site + " foi carregado com sucesso! | Status Code: " + strconv.FormatInt(int64(statusCode), 10) + "\n"
 	} else {
-		mensage = "Site: " + site + " está com problemas! | Status Code: " + strconv.FormatInt(int64(statusCode), 10) + "\n"
+		mensage = timebr.ToView() + "Site: " + site + " está com problemas! | Status Code: " + strconv.FormatInt(int64(statusCode), 10) + "\n"
 	}
 
 	fmt.Println(mensage)

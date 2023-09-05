@@ -3,6 +3,8 @@ package errorLog
 import (
 	"fmt"
 	"os"
+
+	timebr "github.com/phmatos07/poc-website-monitoring-go/time-br"
 )
 
 const mensage = "Infelizmente ocorreu um erro!"
@@ -32,9 +34,9 @@ func registerError(erro string) {
 	if err != nil {
 		fmt.Println(mensage)
 		fmt.Println("Erro: ", err)
-		file.WriteString("Erro: " + err.Error() + "\n")
+		file.WriteString(timebr.ToView() + " - Erro: " + err.Error() + "\n")
 		os.Exit(0)
 	}
-	file.WriteString("Erro: " + erro + "\n")
+	file.WriteString(timebr.ToView() + " - Erro: " + erro + "\n")
 	file.Close()
 }
