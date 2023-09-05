@@ -16,7 +16,7 @@ func Log(err error) {
 
 func RegisterLogSite(mensage string) {
 
-	file, err := os.OpenFile("log-site.txt", os.O_RDWR|os.O_CREATE, 0666)
+	file, err := os.OpenFile("log-site.txt", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 
 	if err != nil {
 		Log(err)
@@ -27,14 +27,14 @@ func RegisterLogSite(mensage string) {
 
 func registerError(erro string) {
 
-	file, err := os.OpenFile("error-log.txt", os.O_RDWR|os.O_CREATE, 0666)
+	file, err := os.OpenFile("error-log.txt", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 
 	if err != nil {
 		fmt.Println(mensage)
 		fmt.Println("Erro: ", err)
-		file.WriteString("Erro: " + err.Error())
+		file.WriteString("Erro: " + err.Error() + "\n")
 		os.Exit(0)
 	}
-	file.WriteString("Erro: " + erro)
+	file.WriteString("Erro: " + erro + "\n")
 	file.Close()
 }

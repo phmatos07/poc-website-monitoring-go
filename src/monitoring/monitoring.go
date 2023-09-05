@@ -40,9 +40,9 @@ func ToView(site string, statusCode int) {
 	var mensage string
 
 	if statusCode == 200 {
-		mensage = "Site: " + site + " foi carregado com sucesso! | Status Code: " + strconv.FormatInt(int64(statusCode), 10)
+		mensage = "Site: " + site + " foi carregado com sucesso! | Status Code: " + strconv.FormatInt(int64(statusCode), 10) + "\n"
 	} else {
-		mensage = "Site: " + site + " está com problemas! | Status Code: " + strconv.FormatInt(int64(statusCode), 10)
+		mensage = "Site: " + site + " está com problemas! | Status Code: " + strconv.FormatInt(int64(statusCode), 10) + "\n"
 	}
 
 	fmt.Println(mensage)
