@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+
+	"github.com/phmatos07/poc-website-monitoring-go/errorLog"
 )
 
 func ToMonitor() {
@@ -14,8 +16,13 @@ func ToMonitor() {
 	fmt.Scan(&site)
 
 	for {
-		resp, _ := http.Get(site)
-		toView(site, resp.StatusCode)
+		resp, err := http.Get(site)
+
+		if err != nil {
+			errorLog.Log(err)
+		}
+
+		ToView(site, resp.StatusCode)
 
 		questions()
 		fmt.Scan(&command)
@@ -27,7 +34,7 @@ func ToMonitor() {
 	}
 }
 
-func toView(site string, statusCode int) {
+func ToView(site string, statusCode int) {
 	if statusCode == 200 {
 		fmt.Println("Site:", site, "foi carregado com sucesso!")
 	} else {
