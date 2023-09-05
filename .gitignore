@@ -19,3 +19,7 @@
 
 # Go workspace file
 go.work
+
+# File TXT
+error-log.txt
+log-site.txt
